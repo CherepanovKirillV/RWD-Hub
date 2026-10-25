@@ -172,6 +172,10 @@ p{margin:0}
 .people{border-top:1px solid var(--line)}
 .people div{display:grid;grid-template-columns:240px 1fr;padding:16px 0;border-bottom:1px solid var(--line);gap:16px}
 .people b{font-weight:600}
+.grp{font-size:1.1rem;margin-bottom:-12px}
+.body>.grp+.people+.grp{margin-top:48px}
+.body>.people+.grp{margin-top:48px}
+.people strong{font-weight:600}
 .people span{color:#254556}
 
 /* contact */
@@ -181,6 +185,23 @@ p{margin:0}
 footer{background:var(--ink);color:#8FB3C0;font-size:.85rem;padding:0 0 36px}
 footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display:grid;gap:6px}
 
+/* finance + timeline */
+.sec-h,.body{min-width:0}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmp.plan th[scope=row]{font-weight:500;color:var(--ink);font-size:1rem}
+.cmp.plan td,.cmp.plan th{padding-right:14px}
+.cmp.plan tr.tot th,.cmp.plan tr.tot td{font-weight:600}
+.scroll{overflow-x:auto}
+.rev-x small{display:block;font-size:.78rem;margin-top:2px}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--ink)}
+.tl>li{display:grid;grid-template-columns:200px 1fr;gap:22px;padding:0 0 32px 28px;position:relative}
+.tl>li::before{content:"";position:absolute;left:-10px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--aqua);border:3px solid var(--ink)}
+.tl>li.now::before{background:var(--amber)}
+.tl .when b{display:block;font:600 1.15rem var(--serif);color:var(--teal-d);margin-bottom:4px}
+.tl .when span{display:block;font-size:.9rem;color:#254556}
+.tl h3{font-size:1.15rem;margin-bottom:8px}
+.tl ul{margin:0;padding:0;list-style:none;display:grid;gap:5px;color:#254556;font-size:.97rem;max-width:40rem}
+.tl ul b{font-weight:600;color:var(--ink)}
 @media (max-width:980px){
   .hero .wrap,.sec .wrap{grid-template-columns:1fr;gap:28px}
   .sec-h{position:static}
@@ -199,6 +220,9 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
   .panel dt,.status dt{padding-bottom:2px;border-bottom:0}
   .people div{gap:2px}
   .road{grid-template-columns:1fr}
+  .tl>li{grid-template-columns:1fr;gap:8px}
+  .cmp.plan th[scope=row]{min-width:150px;white-space:normal}
+  .cmp.plan td{min-width:64px}
   .facts{grid-template-columns:1fr}
   .rev{height:200px;gap:8px}
   .cmp{font-size:.92rem}
@@ -216,7 +240,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
     <nav aria-label="Разделы">
       <a href="#how">Как это работает</a>
       <a href="#audience">Для кого</a>
-      <a href="#market">Рынок</a>
+      <a href="#finance">Финансы</a>
       <a href="#roadmap">Дорожная карта</a>
       <a class="btn btn-demo" href="demo.html" target="_blank" rel="noopener">Демо</a>
     </nav>
@@ -353,7 +377,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
     </div>
     <div class="body">
       <div class="tabs" role="tablist" aria-label="Аудитория">
-        <button role="tab" id="t-inv" aria-selected="true" aria-controls="p-inv">Инвестору</button>
+        <button role="tab" id="t-inv" aria-selected="true" aria-controls="p-inv">Инвестору и банку</button>
         <button role="tab" id="t-doc" aria-selected="false" aria-controls="p-doc" tabindex="-1">Главному врачу</button>
         <button role="tab" id="t-ph" aria-selected="false" aria-controls="p-ph" tabindex="-1">Директору фармкомпании</button>
       </div>
@@ -361,10 +385,10 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
       <div class="panel" role="tabpanel" id="p-inv" aria-labelledby="t-inv">
         <h3>Инфраструктурный слой для рынка RWE в России</h3>
         <dl>
-          <dt>Рынок</dt><dd>11,2 млрд руб. TAM, 8,0 млрд руб. SAM, рост 8–10% в год. Около 90% спроса формируют фармкомпании.</dd>
-          <dt>Выручка</dt><dd>Подписка SaaS, интеграция и адаптеры, кастомные исследования.</dd>
-          <dt>Модельные показатели</dt><dd>Окупаемость 33 месяца, IRR 108%, цель выручки 988 млн руб. за пять лет.</dd>
-          <dt>Запрос и выход</dt><dd>Бюджет 94 400 тыс. руб. в форме гранта или взноса в уставный капитал. Выход: M&amp;A со Сбером или стратегическим инвестором, оценка 500 млн – 1 млрд руб.</dd>
+          <dt>Финансирование</dt><dd>Кредит банка 110 млн ₽ траншами с января 2027 по декабрь 2028 под 30% годовых. Выплаты банку из выручки с мая 2029 года, полный расчёт в марте 2031.</dd>
+          <dt>Выручка</dt><dd>20 млн ₽ в 2027 году, 110 в 2028, 280 в 2029, 580 в 2030 и 950 в 2031 (без НДС). Всего 1 940 млн ₽ за 2026–2031.</dd>
+          <dt>Модельные показатели</dt><dd>NPV 152,5 млн ₽, MIRR 68,2% годовых, окупаемость 3,1 года с учётом стоимости денег, индекс доходности 2,11.</dd>
+          <dt>Устойчивость</dt><dd>План выдерживает выручку на 20% ниже плана и задержку выручки на 3 месяца. Задержку на 6 месяцев не выдерживает: нужны дополнительные меры.</dd>
         </dl>
         <a class="go" href="demo.html#admin" target="_blank" rel="noopener">Посмотреть консоль администратора платформы в демо</a>
       </div>
@@ -418,34 +442,57 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
   </div>
 </section>
 
-<section class="sec" id="market">
+<section class="sec" id="finance">
   <div class="wrap">
     <div class="sec-h">
-      <h2>Рынок и модель дохода</h2>
-      <p>Оценки проекта на базе питча.</p>
+      <h2>Финансовый план</h2>
+      <p>Как проект растёт на кредите банка и возвращает деньги. Период: декабрь 2026 – декабрь 2031.</p>
     </div>
     <div class="body">
-      <div class="bars" role="img" aria-label="TAM 11,2 млрд руб., SAM 8,0 млрд руб., SOM 1,0 млрд руб.">
-        <div class="b"><div class="t" style="width:100%">11,2 млрд руб. · TAM</div><div class="d">RWE, RWD и маркетинговая аналитика</div></div>
-        <div class="b"><div class="t s" style="width:71.4%">8,0 млрд руб. · SAM</div><div class="d">Коммерческий B2B-сегмент</div></div>
-        <div class="b"><div class="t o" style="width:max(8.9%,150px)">1,0 · SOM</div><div class="d">Млрд руб. к 2030 году</div></div>
-      </div>
-      <div class="money">
-        <div><b>2–20 млн руб. в год</b><span>SaaS-подписка</span></div>
-        <div><b>0,5–2 млн руб.</b><span>Интеграция и адаптеры</span></div>
-        <div><b>от 1,5 млн руб.</b><span>Кастомные исследования</span></div>
+      <p class="prose">Банк выдаёт кредит 110 млн ₽ пятью траншами с января 2027 по декабрь 2028 года под 30% годовых. Проценты начисляются ежемесячно и прибавляются к долгу. Пока выручки не хватает на расходы, проценты копятся. С мая 2029 года всё, что остаётся на счёте сверх запаса на три месяца расходов, идёт банку: сначала проценты, затем основной долг.</p>
+      <div class="facts">
+        <div><b>110 млн ₽</b><span>кредит банка, 5 траншей с января 2027 по декабрь 2028</span></div>
+        <div><b>245,8 млн ₽</b><span>вернём банку, из них проценты 135,8 млн ₽. Полный расчёт в марте 2031</span></div>
+        <div><b>1 940 млн ₽</b><span>выручка за 2026–2031 без НДС</span></div>
+        <div><b>102 человека</b><span>команда к концу 2031 года, на старте 13</span></div>
       </div>
       <div>
-        <h3 style="font-size:1.15rem;margin-bottom:14px">Выручка по модели проекта, млн руб.</h3>
-        <div class="rev" role="img" aria-label="Выручка: 2026 — 1,6; 2027 — 26,6; 2028 — 222; 2029 — 460; 2030 — 278 млн руб.">
-          <div class="c"><b>1,6</b><div style="height:1%"></div></div>
-          <div class="c"><b>26,6</b><div style="height:5.8%"></div></div>
-          <div class="c"><b>222</b><div style="height:48.3%"></div></div>
-          <div class="c pk"><b>460</b><div style="height:100%"></div></div>
-          <div class="c dn"><b>278</b><div style="height:60.4%"></div></div>
+        <h3 style="font-size:1.15rem;margin-bottom:14px">Выручка без НДС, млн ₽, и клиники на конец года</h3>
+        <div class="rev" role="img" aria-label="Выручка по годам, млн рублей: 2026 — 0; 2027 — 20; 2028 — 110; 2029 — 280; 2030 — 580; 2031 — 950"><div class="c"><b>0</b><div style="height:1.0%"></div></div><div class="c"><b>20</b><div style="height:2.1%"></div></div><div class="c"><b>110</b><div style="height:11.6%"></div></div><div class="c"><b>280</b><div style="height:29.5%"></div></div><div class="c"><b>580</b><div style="height:61.1%"></div></div><div class="c pk"><b>950</b><div style="height:100.0%"></div></div></div>
+        <div class="rev-x"><span>2026<small>0 клиник</small></span><span>2027<small>10 клиник</small></span><span>2028<small>30 клиник</small></span><span>2029<small>100 клиник</small></span><span>2030<small>200 клиник</small></span><span>2031<small>300 клиник*</small></span></div>
+        <p class="fine" style="margin-top:12px">* Число клиник в 2031 году — допущение модели, в дорожной карте его нет. В 2026 году только регистрация ООО, выручки нет.</p>
+      </div>
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:6px">План по годам, млн ₽</h3>
+        <div class="scroll"><table class="cmp plan"><thead><tr><th scope="col"></th><th scope="col" class="num">2027</th><th scope="col" class="num">2028</th><th scope="col" class="num">2029</th><th scope="col" class="num">2030</th><th scope="col" class="num">2031</th><th scope="col" class="num">Итого</th></tr></thead><tbody><tr><th scope="row">Транши банка</th><td class="num">59,6</td><td class="num">50,4</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">110,0</td></tr><tr class="tot"><th scope="row">Выручка без НДС</th><td class="num">20,0</td><td class="num">110,0</td><td class="num">280,0</td><td class="num">580,0</td><td class="num">950,0</td><td class="num">1 940,0</td></tr><tr><th scope="row">Расходы с налогами и НДС</th><td class="num">59,5</td><td class="num">126,0</td><td class="num">283,7</td><td class="num">473,4</td><td class="num">833,8</td><td class="num">1 776,4</td></tr><tr class="tot"><th scope="row">Выплаты банку</th><td class="num">—</td><td class="num">—</td><td class="num">43,7</td><td class="num">185,8</td><td class="num">16,3</td><td class="num">245,8</td></tr><tr><th scope="row">Деньги на счёте на конец года</th><td class="num">20,1</td><td class="num">78,7</td><td class="num">92,9</td><td class="num">141,3</td><td class="num">450,2</td><td class="num"></td></tr><tr><th scope="row">Долг перед банком на конец года</th><td class="num">75,4</td><td class="num">159,2</td><td class="num">166,2</td><td class="num">16,2</td><td class="num">—</td><td class="num"></td></tr></tbody></table></div>
+        <p class="fine" style="margin-top:10px">Максимальный долг перед банком — 182,2 млн ₽ в июле 2029 года. Денег на расходы хватает во все месяцы, минимум на счёте — 14,9 млн ₽.</p>
+      </div>
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:6px">Транши и погашение, млн ₽</h3>
+        <div class="scroll"><table class="cmp plan"><thead><tr><th scope="col">Транш</th><th scope="col">Месяц</th><th scope="col" class="num">Сумма</th><th scope="col" class="num">Вернём банку</th><th scope="col">Полное погашение</th></tr></thead><tbody><tr><th scope="row">Транш 1</th><td>янв 2027</td><td class="num">25,5</td><td class="num">58,96</td><td>май 2030</td></tr><tr><th scope="row">Транш 2</th><td>апр 2027</td><td class="num">17,0</td><td class="num">43,58</td><td>авг 2030</td></tr><tr><th scope="row">Транш 3</th><td>июл 2027</td><td class="num">17,1</td><td class="num">43,21</td><td>сен 2030</td></tr><tr><th scope="row">Транш 4</th><td>янв 2028</td><td class="num">19,1</td><td class="num">43,38</td><td>ноя 2030</td></tr><tr><th scope="row">Транш 5</th><td>дек 2028</td><td class="num">31,3</td><td class="num">56,66</td><td>мар 2031</td></tr><tr class="tot"><th scope="row">Итого</th><td></td><td class="num">110,0</td><td class="num">245,80</td><td>мар 2031</td></tr></tbody></table></div>
+        <p class="fine" style="margin-top:10px">Транши гасятся в порядке получения. Каждый транш выдаётся в минимальной сумме, чтобы на счёте всегда оставался запас на три месяца расходов.</p>
+      </div>
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:6px">Оценка проекта без учёта денег банка</h3>
+        <div class="money">
+          <div><b>152,5 млн ₽</b><span>NPV: чистый дисконтированный доход сверх требуемой доходности 29,48% годовых</span></div>
+          <div><b>68,2% годовых</b><span>MIRR: модифицированная внутренняя норма доходности, в 2,3 раза выше ставки дисконтирования</span></div>
+          <div><b>3,1 года</b><span>срок окупаемости с учётом стоимости денег, январь 2030. Без учёта — 2,9 года</span></div>
+          <div><b>2,11</b><span>PI: каждый вложенный рубль возвращает себя и ещё 1,11 ₽</span></div>
+          <div><b>42,7 млн ₽</b><span>наибольшая потребность в деньгах со стороны. Кредит 110 млн ₽ покрывает её с запасом на три месяца расходов</span></div>
+          <div><b>331,1 млн ₽</b><span>денег у ООО на 31.12.2031 после полного расчёта с банком, за вычетом налогов 2031 года</span></div>
         </div>
-        <div class="rev-x"><span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span></div>
-        <p class="fine" style="margin-top:12px">Снижение в 2030 году связано с переходом на роялти-модель. Показатели модельные, не являются гарантией результата.</p>
+        <p class="fine" style="margin-top:10px">Ставка дисконтирования 29,48% — доходность ОФЗ на 10 лет 16,48% плюс премия за риск нового продукта 13%. При ставке от 20% до 40% NPV остаётся положительным: от 214,2 до 106,0 млн ₽.</p>
+      </div>
+      <div>
+        <h3 style="font-size:1.15rem;margin-bottom:6px">Что будет, если условия хуже плана</h3>
+        <dl class="status" style="margin-top:0">
+          <dt>Выручка на 20% ниже плана</dt><dd>План выдерживает. Полный расчёт с банком — декабрь 2031.</dd>
+          <dt>Выручка на 3 месяца позже</dt><dd>План выдерживает за счёт запаса на три месяца расходов. Полный расчёт — ноябрь 2031.</dd>
+          <dt>Нет IT-аккредитации</dt><dd>План выдерживает без льгот по налогу на прибыль и страховым взносам. Полный расчёт — октябрь 2031, проценты банку 180,7 млн ₽ вместо 135,8.</dd>
+          <dt>Выручка на 6 месяцев позже</dt><dd>План не выдерживает: нехватка до 45,3 млн ₽, 27 месяцев без денег на расходы. Нужны дополнительные меры.</dd>
+        </dl>
+        <p class="fine" style="margin-top:10px">Это проверка запаса прочности, а не прогноз. Показатели модельные, не являются гарантией результата.</p>
       </div>
     </div>
   </div>
@@ -455,20 +502,16 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
   <div class="wrap">
     <div class="sec-h">
       <h2>Дорожная карта</h2>
-      <p>От пилота в клиниках к инфраструктуре национального масштаба.</p>
+      <p>От первых клиник к федеральной сети и экспорту. Рост определяется числом подключённых МИС.</p>
     </div>
     <div class="body">
-      <div class="road">
-        <div class="now"><div class="y">2026–2027</div><h3>Пилот и стандартизация</h3><p>Edge-узлы в клиниках в рамках ЭПР, OMOP CDM v5.4 и FHIR Ru Core, федеративное обучение в ревматологии, первые RWE-отчёты.</p><div class="res">Результат: TRL 7–8, работающий пилот</div></div>
-        <div><div class="y">2028</div><h3>Масштабирование</h3><p>10+ регионов и 10+ МИС, ЛИС и PACS, генетика и биомаркеры, конструктор когорт, первые продукты со СберМедИИ.</p><div class="res">Результат: TRL 9, промышленная эксплуатация</div></div>
-        <div><div class="y">2029</div><h3>Федеральная сеть</h3><p>Интеграция с ЕГИСЗ и региональными РМИС, отраслевой стандарт обмена RWD, 35–45 платящих клиентов.</p><div class="res">Результат: инфраструктура национального масштаба</div></div>
-        <div><div class="y">2030+</div><h3>Экспорт и развитие</h3><p>Выход в ЕАЭС на базе OMOP CDM, международные фармкомпании обучают ИИ через федеративное обучение.</p><div class="res">Результат: слой для будущих технологий</div></div>
-      </div>
+      <ol class="tl"><li class=now><div class="when"><b>Декабрь 2026 – май 2027</b><span>Выручка: 0</span><span>Команда: 0</span></div><div><h3>Запуск</h3><ul><li><b>Технологии:</b> микросервис на сервере РосМедИнфо, тесты ML-моделей</li><li><b>Данные:</b> одна база, 500 тыс. пациентов</li><li><b>Продажи:</b> письмо о намерениях (LOI) с фармкомпанией на пилот</li></ul></div></li><li><div class="when"><b>2027</b><span>Выручка: 20 млн ₽</span><span>Клиник: 5–10</span><span>Команда: 13</span></div><div><h3>Первые клиники и пилоты</h3><ul><li><b>Технологии:</b> коннекторы к МИС (Медиалог, Барс, qMS), Edge-узлы, OMOP / FHIR, Control Plane</li><li><b>Данные:</b> 5–10 клиник, живые данные</li><li><b>Продажи:</b> пилоты клиник и фармы</li><li><b>Июнь 2027:</b> ввод MVP и первая выручка</li></ul></div></li><li><div class="when"><b>2028</b><span>Выручка: 110 млн ₽</span><span>Клиник: 30+</span><span>Команда: 25</span></div><div><h3>Топ-10 МИС</h3><ul><li><b>Технологии:</b> Топ-10 МИС, ЕМИАС и 1С, модуль для страховых</li><li><b>Данные:</b> 30+ клиник, Топ-10 МИС (80% рынка), ЛИС</li><li><b>Продажи:</b> SaaS-подписки фармы, страховые</li></ul></div></li><li><div class="when"><b>2029</b><span>Выручка: 280 млн ₽</span><span>Клиник: 100+</span><span>Команда: 45</span></div><div><h3>Регионы и генетика</h3><ul><li><b>Технологии:</b> алгоритмы «геном — терапия», IoT</li><li><b>Данные:</b> 15+ регионов (РМИС), генетические лаборатории</li><li><b>Продажи:</b> федеральная сеть, производители оборудования</li><li><b>Май 2029:</b> первые выплаты банку</li></ul></div></li><li><div class="when"><b>2030–2031</b><span>Выручка: 580 млн ₽ в 2030, 950 млн ₽ в 2031</span><span>Клиник: 200 в 2030, 300 в 2031*</span><span>Команда: 65 в 2030, 102 в 2031</span></div><div><h3>Экспорт</h3><ul><li><b>Технологии:</b> кросс-граничное федеративное обучение</li><li><b>Данные:</b> международные сети (ЕАЭС, БРИКС)</li><li><b>Продажи:</b> экспорт лицензий</li><li><b>Март 2031:</b> полный расчёт с банком</li></ul></div></li></ol>
+      <p class="fine">Без интеграции с МИС нет данных, нет продукта и нет выручки: в 2027 году первые 5–10 клиник и пилоты, в 2028 году Топ-10 МИС и масштабирование продаж. * Число клиник в 2031 году — допущение модели.</p>
       <dl class="status">
-        <dt>Где мы сейчас</dt><dd>MVP готов к пилоту, TRL 6–7, код в разработке.</dd>
+        <dt>Где мы сейчас</dt><dd>ООО регистрируется в декабре 2026 года. Первый транш, команда и начало разработки — январь 2027, ввод MVP и первая выручка — июнь 2027.</dd>
         <dt>Доступ к данным</dt><dd>Архитектура доступа финализируется, межведомственное согласование в процессе.</dd>
         <dt>ЭПР</dt><dd>Пока не запущен в промышленную эксплуатацию. Практическое использование ожидается в конце 2026 или начале 2027 года.</dd>
-        <dt>Пилот</dt><dd>Планируется с РосМедИнфо и 2–3 клиниками, с демонстрацией результатов заказчику.</dd>
+        <dt>Пилот</dt><dd>Начинаем с микросервиса на сервере РосМедИнфо и письма о намерениях от фармкомпании. В 2027 году — пилоты клиник и фармы.</dd>
       </dl>
     </div>
   </div>
@@ -501,15 +544,24 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
       <p>RWE, ML и high-load в одной команде.</p>
     </div>
     <div class="body">
+      <h3 class="grp">Команда</h3>
       <div class="people">
-        <div><b>Руководитель проекта</b><span>20 лет в фарме, экспертиза в RWE</span></div>
+        <div><b>CEO</b><span><strong>Огава Елена Афанасьевна.</strong> 20 лет в фарме, экспертиза в RWE</span></div>
         <div><b>CTO</b><span>High-load, ML, федеративное обучение</span></div>
-        <div><b>Архитектор данных, Data Lead</b><span>Специалитет химфака МГУ, магистратура ВШЭ «Когнитивные науки и технологии», 20+ лет работы с базами данных. Отвечает за архитектуру данных, стандартизацию и аналитику</span></div>
-        <div><b>Расширяем команду</b><span>ML-инженер, backend-разработчик, врач-консультант</span></div>
+        <div><b>Архитектор данных, Data Lead</b><span><strong>Бахронов Джамшид.</strong> Специалитет химфака МГУ, магистратура ВШЭ «Когнитивные науки и технологии», 20+ лет работы с базами данных. Отвечает за архитектуру данных, стандартизацию и аналитику</span></div>
+        <div><b>Рост команды</b><span>На конец года: 13 человек в 2027, 25 в 2028, 45 в 2029, 65 в 2030, 102 в 2031. В 2031 году: разработка 28, внедрение и поддержка 23, продажи 21, данные и ML 19, администрация 6, руководство 5</span></div>
       </div>
+      <h3 class="grp">Партнёры и заказчики</h3>
       <div class="people">
         <div><b>РосМедИнфо</b><span>Соисполнитель: данные и клиническая экспертиза</span></div>
         <div><b>ЗАО «ФармФирма «Сотекс»</b><span>Потенциальный заказчик RWE-исследований</span></div>
+        <div><b>АО Некстген / ПАО Артген Биотех</b><span>Потенциальный заказчик RWE-исследований</span></div>
+        <div><b>ООО МВС-Мед / АО Р-Фарм</b><span>Потенциальный заказчик RWE-исследований</span></div>
+      </div>
+      <h3 class="grp">Научная легитимность и стандартизация</h3>
+      <div class="people">
+        <div><b>Проф. Алексей Сергеевич Колбин</b><span>Д.м.н., руководитель рабочей группы RWD/RWE при Минздраве РФ. На стадии согласования</span></div>
+        <div><b>FHIR RU (HL7 Russia)</b><span>Ведутся переговоры. Сообщество подтверждает соответствие архитектуры требованиям ЕГИСЗ</span></div>
       </div>
     </div>
   </div>
@@ -533,7 +585,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;display
 <footer>
   <div class="wrap">
     <span>RWD-Hub · Национальная технологическая инициатива, рынок HealthNet</span>
-    <span>Интерфейс в демо — прототип с вымышленными данными. Финансовые показатели — модельные оценки проекта, не гарантии. Сроки зависят от запуска ЭПР и регуляторных условий.</span>
+    <span>Интерфейс в демо — прототип с вымышленными данными. Финансовые показатели — модельные оценки инвестиционного плана на декабрь 2026 – декабрь 2031, не гарантии. Сроки зависят от запуска ЭПР и регуляторных условий.</span>
   </div>
 </footer>
 
